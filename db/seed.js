@@ -3,12 +3,14 @@ const User = require('../lib/models/User');
 
 module.exports = async({ usersToCreate = 5 } = {}) => {
   const loggedInUser = await User.create({
-    email: 'test@test.com',
-    password: 'password'
+    username: 'wario',
+    password: 'itsnotme',
+    profilePhotoUrl: 'www.placekitten.com'
   });
 
   const users = await User.create([...Array(usersToCreate)].slice(1).map(() => ({
-    email: chance.email(),
-    password: chance.animal()
+    username: chance.string(),
+    password: chance.animal(),
+    profilePhotoUrl: chance.url()
   })));
 };

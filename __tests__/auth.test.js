@@ -8,13 +8,15 @@ describe('auth routes', () => {
     return request(app)
       .post('/api/v1/auth/signup')
       .send({
-        email: 'spot@dogs.com',
-        password: 'spotWasHere'
+        username: 'mario',
+        password: 'itsame',
+        profilePhotoUrl: 'www.placekitten.com'
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          email: 'spot@dogs.com',
+          username: 'mario',
+          profilePhotoUrl: 'www.placekitten.com',
           __v: 0
         });
       });
@@ -24,13 +26,15 @@ describe('auth routes', () => {
     return request(app)
       .post('/api/v1/auth/login')
       .send({
-        email: 'test@test.com',
-        password: 'password'
+        username: 'wario',
+        password: 'itsnotme',
+        profilePhotoUrl: 'www.placekitten.com'
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          email: 'test@test.com',
+          username: 'wario',
+          profilePhotoUrl: 'www.placekitten.com',
           __v: 0
         });
       });
@@ -42,7 +46,8 @@ describe('auth routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          email: 'test@test.com',
+          username: 'wario',
+          profilePhotoUrl: 'www.placekitten.com',
           __v: 0
         });
       });
