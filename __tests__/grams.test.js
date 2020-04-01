@@ -33,9 +33,7 @@ describe('grams routes', async() => {
     return getAgent()
       .get('/api/v1/grams')
       .then(res => {
-        expect(res.body).toEqual({
-          ...grams,
-        });
+        expect(res.body).toEqual(grams);
       });
   });
 });
