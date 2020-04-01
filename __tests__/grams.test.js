@@ -39,14 +39,16 @@ describe('grams routes', async() => {
 
   it('gets a gram by id', async() => {
     const user = await getUser({ username: 'wario' });
-    const gram = await getGram();
+    const gram = await getGram({ user: user._id });
+    // const comments = await getComments({ post: post._id });
 
     return getAgent()
-      .get('/api/v1/grams/:id')
+      .get(`/api/v1/grams/${gram._id}`)
       .then(res => {
         expect(res.body).toEqual({
-          ...user,
-          gram
+          ...gram,
+          user,
+          // comments
         });
       });
   });
