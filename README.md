@@ -1,7 +1,11 @@
-# Tardygram (Instagram clone)
+* `GET /posts/:id`
+  * responds with a post by id
+  * should include the populated user
+  * should include all comments associated with the post (populated with commenter)
+    * HINT: You'll need to make two separate queries and a `Promise.all`
 
-* `GET /grams/popular`
-  * respond with a list of the 10 grams with the most comments
+* `GET /posts/popular`
+  * respond with a list of the 10 posts with the most comments
 
 ### Comments
 

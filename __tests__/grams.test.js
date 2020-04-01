@@ -1,4 +1,4 @@
-const { getUser, getAgent, getGram, getGrams } = require('../db/data-helpers');
+const { getUser, getAgent, getGram, getGrams, getComments } = require('../db/data-helpers');
 
 const request = require('supertest');
 const app = require('../lib/app');
@@ -40,7 +40,7 @@ describe('grams routes', async() => {
   it('gets a gram by id', async() => {
     const user = await getUser({ username: 'wario' });
     const gram = await getGram({ user: user._id });
-    // const comments = await getComments({ post: post._id });
+    const comments = await getComments({ gram: gram._id });
 
     return getAgent()
       .get(`/api/v1/grams/${gram._id}`)
@@ -48,7 +48,7 @@ describe('grams routes', async() => {
         expect(res.body).toEqual({
           ...gram,
           user,
-          // comments
+          comments
         });
       });
   });
