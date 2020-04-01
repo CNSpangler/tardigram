@@ -4,15 +4,15 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 describe('grams routes', async() => {
-  const user = await getUser({ username: 'wario' });
-  it('creates a new gram', () => {
-    return request(app)
-      .post('/api/v1/auth/grams')
+  it('creates a new gram', async() => {
+    const user = await getUser({ username: 'wario' });
+    return getAgent()
+      .post('/api/v1/grams')
       .send({
         user: user._id,
         photoUrl: 'www.placekitten.com',
         caption: 'Chainsaw is the greatest',
-        tags: ['#chainsaw', '#blessed']
+        tags: ['chainsaw, blessed']
       })
       .then(res => {
         expect(res.body).toEqual({
@@ -20,7 +20,7 @@ describe('grams routes', async() => {
           user: user._id,
           photoUrl: 'www.placekitten.com',
           caption: 'Chainsaw is the greatest',
-          tags: ['#chainsaw', '#blessed'],
+          tags: ['chainsaw, blessed'],
           __v: 0  
         });
       });

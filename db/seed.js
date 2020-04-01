@@ -15,12 +15,12 @@ module.exports = async({ usersToCreate = 5, gramsToCreate = 10 } = {}) => {
     profilePhotoUrl: chance.url()
   })));
 
-  const tags = ['#blessed', '#HHS', '#cantstop', '#wontstop', '#spot4eva', '#booger', '#toto', '#topeka'];
+  const tags = ['#blessed', '#ChainsawMeowsacres', '#cantstop', '#wontstop', '#spot4eva', '#booger', '#toto', '#topeka'];
 
   const grams = await Gram.create([...Array(gramsToCreate)].slice(1).map(() => ({
     user: chance.pickone(users),
     photoUrl: chance.url(),
     caption: chance.sentence(),
-    tags: [chance.pickset(tags, 2)]
+    tags: [chance.pickone(tags)]
   })));
 };
