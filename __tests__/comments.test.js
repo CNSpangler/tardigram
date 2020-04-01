@@ -33,7 +33,10 @@ describe('comments routes', async() => {
     return getAgent()
       .delete(`/api/v1/comments/${comment._id}`)
       .then(res => {
-        expect(res.body).toEqual(comment);
+        expect(res.body).toEqual({
+          _id: comment._id,
+          comment: comment.comment
+        });
       });
   });
 });
