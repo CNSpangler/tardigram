@@ -46,9 +46,9 @@ Create authentication routes
 
 ### Posts
 
-Create RESTful post routes
+Create RESTful gram routes
 
-* `POST /posts`
+* `POST /grams`
   * requires authentication
   * creates a new post
   * responds with the new post
