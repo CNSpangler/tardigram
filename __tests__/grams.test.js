@@ -68,6 +68,21 @@ describe('grams routes', async() => {
       });
   });
 
+  it('gets the top ten most commented grams', async() => {
+    const user = await getUser({ username: 'wario' });
+    const grams = await getGrams({ user: user._id });
+
+    return getAgent()
+      .get('/api/v1/mostComments')
+      .then(res => {
+        expect(res.body.length).toEqual(10);
+        expect(res.body).toContainEqual({
+          _id: expect.any(String),
+          user: expect.any(String)
+        });
+      });
+  });
+
   it('deletes a gram by id', async() => {
     const user = await getUser({ username: 'wario' });
     const gram = await getGram({ user: user._id });
