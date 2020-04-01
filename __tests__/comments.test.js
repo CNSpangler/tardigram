@@ -25,4 +25,15 @@ describe('comments routes', async() => {
         });
       });
   });
+
+  it('deletes a comment by id', async() => {
+    const user = await getUser({ username: 'wario' });
+    const gram = await getGram({ user: user._id });
+
+    return getAgent()
+      .delete(`/api/v1/comments/${gram._id}`)
+      .then(res => {
+        expect(res.body).toEqual(gram);
+      });
+  });
 });
