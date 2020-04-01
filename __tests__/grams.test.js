@@ -36,4 +36,18 @@ describe('grams routes', async() => {
         expect(res.body).toEqual(grams);
       });
   });
+
+  it('gets a gram by id', async() => {
+    const user = await getUser({ username: 'wario' });
+    const gram = await getGram();
+
+    return getAgent()
+      .get('/api/v1/grams/:id')
+      .then(res => {
+        expect(res.body).toEqual({
+          ...user,
+          gram
+        });
+      });
+  });
 });
