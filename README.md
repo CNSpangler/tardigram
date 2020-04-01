@@ -53,25 +53,25 @@ Create RESTful post routes
   * creates a new post
   * responds with the new post
   * HINT: get the user who created the post from `req.user`.
-* `GET /posts`
-  * responds with a list of posts
-* `GET /posts/:id`
-  * responds with a post by id
+* `GET /grams`
+  * responds with a list of grams
+* `GET /grams/:id`
+  * responds with a gram by id
   * should include the populated user
-  * should include all comments associated with the post (populated with commenter)
+  * should include all comments associated with the gram (populated with commenter)
     * HINT: You'll need to make two separate queries and a `Promise.all`
-* `PATCH /posts/:id`
+* `PATCH /grams/:id`
   * requires authentication
-  * only can update the post caption
-  * respond with the updated post
-  * NOTE: make sure the user attempting to update the post owns it
-* `DELETE /posts/:id`
+  * only can update the gram caption
+  * respond with the updated gram
+  * NOTE: make sure the user attempting to update the gram owns it
+* `DELETE /grams/:id`
   * requires authentication
-  * deletes a post
-  * responds with the deleted post
-  * NOTE: make sure the user attempting to delete the post owns it
-* `GET /posts/popular`
-  * respond with a list of the 10 posts with the most comments
+  * deletes a gram
+  * responds with the deleted gram
+  * NOTE: make sure the user attempting to delete the gram owns it
+* `GET /grams/popular`
+  * respond with a list of the 10 grams with the most comments
 
 ### Comments
 
