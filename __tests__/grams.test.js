@@ -67,4 +67,15 @@ describe('grams routes', async() => {
         });
       });
   });
+
+  it('deletes a gram by id', async() => {
+    const user = await getUser({ username: 'wario' });
+    const gram = await getGram({ user: user._id });
+
+    return getAgent()
+      .delete(`/api/v1/grams/${gram._id}`)
+      .then(res => {
+        expect(res.body).toEqual(gram);
+      });
+  });
 });
