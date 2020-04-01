@@ -25,4 +25,17 @@ describe('grams routes', async() => {
         });
       });
   });
+
+  it('gets all grams', async() => {
+    const user = await getUser({ username: 'wario' });
+    const grams = await getGrams();
+
+    return getAgent()
+      .get('/api/v1/grams')
+      .then(res => {
+        expect(res.body).toEqual({
+          ...grams,
+        });
+      });
+  });
 });
