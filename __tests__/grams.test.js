@@ -63,8 +63,7 @@ describe('grams routes', async() => {
       .then(res => {
         expect(res.body).toEqual({
           ...gram,
-          user,
-          // comments
+          caption: 'ilu chainsaw',
         });
       });
   });
