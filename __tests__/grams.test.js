@@ -52,4 +52,20 @@ describe('grams routes', async() => {
         });
       });
   });
+
+  it('updates a gram by id', async() => {
+    const user = await getUser({ username: 'wario' });
+    const gram = await getGram({ user: user._id });
+
+    return getAgent()
+      .patch(`/api/v1/grams/${gram._id}`)
+      .send({ caption: 'ilu chainsaw' })
+      .then(res => {
+        expect(res.body).toEqual({
+          ...gram,
+          user,
+          // comments
+        });
+      });
+  });
 });
