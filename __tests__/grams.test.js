@@ -53,6 +53,15 @@ describe('grams routes', async() => {
       });
   });
 
+  it('gets most popular gram', async() => {
+    const grams = await getGrams();
+    return getAgent()
+      .get('/api/v1/grams')
+      .then(res => {
+        expect(res.body).toEqual(grams);
+      });
+  });
+
   it('updates a gram by id', async() => {
     const user = await getUser({ username: 'wario' });
     const gram = await getGram({ user: user._id });
@@ -64,21 +73,6 @@ describe('grams routes', async() => {
         expect(res.body).toEqual({
           ...gram,
           caption: 'ilu chainsaw',
-        });
-      });
-  });
-
-  it('gets the top ten most commented grams', async() => {
-    const user = await getUser({ username: 'wario' });
-    const grams = await getGrams({ user: user._id });
-
-    return getAgent()
-      .get('/api/v1/mostComments')
-      .then(res => {
-        expect(res.body.length).toEqual(10);
-        expect(res.body).toContainEqual({
-          _id: expect.any(String),
-          user: expect.any(String)
         });
       });
   });
